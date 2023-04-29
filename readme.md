@@ -4,12 +4,20 @@ Run this on fly.io, it should do the proxying.
 
 You can add to the `default.conf` to redirect at certain locations.
 
+For example, I have the following in `default.conf`:
+
+```nginx
+location = /blog/ultimate-guide-to-rack-attack/ {
+    return 301 https://some-other-site.com
+}
+```
+
 ## Using on Fly
 
-Update to latest `flyctl`, just because. It changes a lot, in the last month or so, there are important updates.
+1️⃣ Update to latest `flyctl`, just because. It changes a lot, in the last month or so, there are important updates.
 
 
-From the current directory (where the `Dockerfile` lives):
+2️⃣ From the current directory (where the `Dockerfile` lives), create a new Fly app and deploy it:
 
 ```bash
 fly launch
@@ -27,7 +35,11 @@ fly launch
 3. This means that the domain will not longer point to GitHub, so the proxy setting in `default.conf` will need
    to change to point to the correct location (perhaps the GitHub URL they generate? - something like `mikes-page.github.io`?)
 
-Assuming you have a `fly` app created already (after the `fly launch` command):
+### IP Addresses
+
+Let's see what your IP addresses are.
+
+Assuming you have an app created already (after the `fly launch` command):
 
 ```bash
 # You get IP's assigned to you automatically, however
@@ -36,14 +48,16 @@ Assuming you have a `fly` app created already (after the `fly launch` command):
 # View your IP addresses:
 fly ips list
 
-# If you want have a dedicated IP:
+# If you want dedicated IPs:
 flyctl ips allocate-v4
 flyctl ips allocate-v6 # if you want...
 ```
 
+### DNS
+
 Take the IPv4 (and optionally the IPv6) and edit the `A` / `AAAA` record for the domain so they point to that IP.
 
-> You'll probably break SSL traffic for the site between the time that DNS is doing it's thing and before Fly can generate an SSL.
+> ⚠️ You'll probably break SSL traffic for the site between the time that DNS is doing it's thing and before Fly can generate an SSL.
 
 ```bash
 # Once letsencrypt can see the DNS change,
