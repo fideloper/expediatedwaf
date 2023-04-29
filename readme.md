@@ -51,3 +51,8 @@ Take the IPv4 (and optionally the IPv6) and edit the `A` / `AAAA` record for the
 flyctl certs create "expeditedsecurity.com"
 ```
 
+## Note
+
+The `fly.toml.example` file is here for reference but you won't need it. The `fly launch` command will generate you a new one
+with the correct application name and region filled out.
+
