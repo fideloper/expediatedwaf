@@ -56,3 +56,7 @@ flyctl certs create "expeditedsecurity.com"
 The `fly.toml.example` file is here for reference but you won't need it. The `fly launch` command will generate you a new one
 with the correct application name and region filled out.
 
+### Docs
+
+* Custom certs docs: https://fly.io/docs/app-guides/custom-domains-with-fly/
+* Manage IP's (cli ref):  https://fly.io/docs/flyctl/ips/
