@@ -49,8 +49,8 @@ Assuming you have an app created already (after the `fly launch` command):
 fly ips list
 
 # If you want dedicated IPs:
-flyctl ips allocate-v4
-flyctl ips allocate-v6 # if you want...
+fly ips allocate-v4
+fly ips allocate-v6 # if you want...
 ```
 
 ### DNS
@@ -62,7 +62,7 @@ Take the IPv4 (and optionally the IPv6) and edit the `A` / `AAAA` record for the
 ```bash
 # Once letsencrypt can see the DNS change,
 # we can generate certs for that domain on Fly
-flyctl certs create "expeditedsecurity.com"
+fly certs create "expeditedsecurity.com"
 ```
 
 ## Note
